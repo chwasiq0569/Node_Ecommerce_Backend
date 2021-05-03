@@ -7,5 +7,5 @@ app.get("/", (req, res) => {
 })
 
 app.listen(4000, () => {
-    console.log("WOEKGIN ON PORT 4000")
+    console.log("WORKGING ON PORT 4000")
 })

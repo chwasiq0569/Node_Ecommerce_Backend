@@ -1,12 +1,14 @@
 const express = require('express');
 const userRoutes = require('./router/user')
 const mongoose = require('mongoose');
+const dotenv = require('dotenv')
 
 const app = express()
 app.use(express.json())
+dotenv.config();
 
 mongoose.set('useCreateIndex', true);
-mongoose.connect(`mongodb+srv://admin:admin@cluster0.zq4mb.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`, {
+mongoose.connect(`mongodb+srv://${process.env.MONGO_DB_USER}:${process.env.MONGO_DB_PASSWORD}@cluster0.zq4mb.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`, {
     useNewUrlParser : true,
     useUnifiedTopology : true
 }).then(() => console.log("DB CONNECTED")).catch((err) => console.log("Error: ", err))

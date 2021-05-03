@@ -1,5 +1,6 @@
 const express = require('express');
 const userRoutes = require('./router/user')
+const productRoutes = require('./router/product')
 const mongoose = require('mongoose');
 const dotenv = require('dotenv')
 
@@ -14,6 +15,7 @@ mongoose.connect(`mongodb+srv://${process.env.MONGO_DB_USER}:${process.env.MONGO
 }).then(() => console.log("DB CONNECTED")).catch((err) => console.log("Error: ", err))
 
 app.use('/api', userRoutes)
+app.use('/api', productRoutes)
 
 app.get("/", (req, res) => {
     res.json({'msg': 'WELCOME'})
